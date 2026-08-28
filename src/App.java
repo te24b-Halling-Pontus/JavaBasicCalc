@@ -1,3 +1,5 @@
+
+
 String[] operators = { "Addition", "Suptraktion", "Multiplikation", "Divition" };
 
 void main() {
@@ -6,17 +8,19 @@ void main() {
     for (int i = 1; i <= operators.length; i++) {
         IO.println(i + ". " + operators[i - 1]);
     }
-    boolean ss = true;
-    while (ss) {
-        operatorChoice = Math.round(S("Vall av räknesätt") - 1);
-        if (operatorChoice > 0 && operatorChoice < 4)
-        {
-            ss = false;
+    boolean temp = true;
+    while (temp) {
+        operatorChoice = Math.round(StringToFloat("Vall av räknesätt:") - 1);
+        if (operatorChoice > 0 && operatorChoice < 4) {
+            temp = false;
+        }
+        else{
+            IO.println("du kan bara välja mellan 1 och 4 ");
         }
     }
     IO.println("Du valde " + operators[operatorChoice]);
-    float number1 = S("Första Talet: ");
-    float number2 = S("Andra talet: ");
+    float number1 = StringToFloat("Första Talet: ");
+    float number2 = StringToFloat("Andra talet: ");
 
     switch (operatorChoice) {
         case 1 -> Add(number1, number2);
@@ -42,13 +46,13 @@ static void Div(float number1, float number2) {
     IO.println(number1 / number2);
 }
 
-static float S(String s_number) {
-    boolean ss = true;
+static float StringToFloat(String s_number) {
+    boolean temp = true;
     float number = 1;
-    while (ss) {
+    while (temp) {
         try {
             number = Float.parseFloat(IO.readln(s_number));
-            ss = false;
+            temp = false;
         } catch (Exception e) {
             IO.println("Skriv inga bokstäver eller något dumt");
         }
